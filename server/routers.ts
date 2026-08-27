@@ -14,6 +14,7 @@ import {
   getUserOverview,
   getInstitutionStats,
   getStudentLearningDetail,
+  getUserDataExport,
   joinClassroomByCode,
   listActivitiesForUser,
   listAssignmentsForStudent,
@@ -89,6 +90,14 @@ export const appRouter = router({
     myAssignments: permittedProcedure("student:self:read").query(({ ctx }) => listAssignmentsForStudent(ctx.user.id)),
     mySubmissions: permittedProcedure("student:self:read").query(({ ctx }) => listSubmissionsForStudent(ctx.user.id)),
     myStudentRecognitions: permittedProcedure("student:self:read").query(({ ctx }) => listRecognitionsForStudent(ctx.user.id)),
+    exportMyData: protectedProcedure.query(({ ctx }) => getUserDataExport({
+      id: ctx.user.id,
+      name: ctx.user.name,
+      email: ctx.user.email,
+      role: ctx.user.role,
+      createdAt: ctx.user.createdAt,
+      updatedAt: ctx.user.updatedAt,
+    })),
     classStudents: permittedProcedure("student:detail:read")
       .input(z.object({ classroomId: z.number().int().positive() }))
       .query(({ ctx, input }) => listStudentsForClassroom({ requesterId: ctx.user.id, classroomId: input.classroomId })),

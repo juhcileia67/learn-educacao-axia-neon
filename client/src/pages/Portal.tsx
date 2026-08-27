@@ -23,6 +23,7 @@ import {
   ChevronRight,
   ClipboardCheck,
   Copy,
+  Download,
   FilePlus2,
   Flame,
   GraduationCap,
@@ -139,6 +140,18 @@ function StudentEvolutionTimeline({ items }: { items: StudentTimelineItem[] }) {
   return <div className="student-evolution-timeline">{orderedItems.map((item) => { const Icon = iconByKind[item.kind]; return <article key={item.id} className={`student-timeline-item ${item.kind}`}><span className="student-timeline-icon"><Icon size={16}/></span><div><span>{labelByKind[item.kind]}{item.occurredAt ? ` · ${item.occurredAt.toLocaleDateString("pt-BR")}` : ""}</span><b>{item.title}</b><p>{item.detail}</p></div></article>; })}</div>;
 }
 
+function downloadJsonFile(data: unknown, filename: string) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
 function StudentView() {
   const { isAuthenticated, user } = useAuth();
   const search = useSearch();
@@ -148,6 +161,7 @@ function StudentView() {
   const assignmentsQuery = trpc.platform.myAssignments.useQuery(undefined, { enabled: isAuthenticated });
   const submissionsQuery = trpc.platform.mySubmissions.useQuery(undefined, { enabled: isAuthenticated });
   const recognitionsQuery = trpc.platform.myStudentRecognitions.useQuery(undefined, { enabled: isAuthenticated });
+  const exportDataQuery = trpc.platform.exportMyData.useQuery(undefined, { enabled: false, retry: false });
   const [activeAssignment, setActiveAssignment] = useState<number | null>(null);
   const [answerText, setAnswerText] = useState("");
   const [classCode, setClassCode] = useState("");
@@ -175,6 +189,16 @@ function StudentView() {
     onSuccess: ({ reply }) => setAxiaReply(reply),
     onError: (error) => toast.error(error.message),
   });
+  const handleExportData = async () => {
+    const result = await exportDataQuery.refetch();
+    if (!result.data) {
+      toast.error("Não foi possível preparar seus dados agora.");
+      return;
+    }
+    const date = new Date().toISOString().slice(0, 10);
+    downloadJsonFile(result.data, `learn-educacao-meus-dados-${date}.json`);
+    toast.success("Seus dados foram exportados em JSON.");
+  };
   const assignments = assignmentsQuery.data ?? [];
   const recognitions = recognitionsQuery.data ?? [];
   const submittedIds = new Set((submissionsQuery.data ?? []).map((submission) => submission.activityId));
@@ -190,7 +214,7 @@ function StudentView() {
     ...recognitions.map((recognition) => ({ id: `recognition-${recognition.id}`, occurredAt: recognition.awardedAt ?? null, kind: "conquista" as const, title: `Conquista: ${recognition.category}`, detail: `${recognition.sourceType === "atividade" ? "Atividade" : "Intervenção"}: ${recognition.sourceLabel}` })),
   ];
   return <div className="portal-content">
-    <SectionHead eyebrow="PAINEL COMPLEMENTAR DO APP" title="Seu caminho continua daqui." copy="Acompanhe a própria evolução e responda atividades atribuídas à sua turma. Não há ranking público: a referência é a sua jornada." action={<button className="portal-button primary" onClick={() => setAxiaOpen(true)}>Abrir AXIA <Bot size={16} /></button>} />
+    <SectionHead eyebrow="PAINEL COMPLEMENTAR DO APP" title="Seu caminho continua daqui." copy="Acompanhe a própria evolução e responda atividades atribuídas à sua turma. Não há ranking público: a referência é a sua jornada." action={<div className="flex flex-wrap gap-2"><button className="portal-button secondary" disabled={!isAuthenticated || exportDataQuery.isFetching} onClick={handleExportData}><Download size={16} /> {exportDataQuery.isFetching ? "Preparando..." : "Exportar meus dados"}</button><button className="portal-button primary" onClick={() => setAxiaOpen(true)}>Abrir AXIA <Bot size={16} /></button></div>} />
     {!isAuthenticated && <DemoNotice />}
     <QueryError error={assignmentsQuery.error ?? submissionsQuery.error ?? recognitionsQuery.error} label="Não foi possível carregar seu percurso privado." />
     {isAuthenticated && <form className="join-class-form" onSubmit={(event) => { event.preventDefault(); joinClassMutation.mutate({ code: classCode }); }}><div><b>Entrar em uma turma</b><span>Use o código fornecido pelo professor para receber atividades no portal.</span></div><input required value={classCode} onChange={(event) => setClassCode(event.target.value)} placeholder="Ex.: 7A-LEARN" /><button disabled={joinClassMutation.isPending} className="portal-button secondary" type="submit">{joinClassMutation.isPending ? "Entrando..." : "Entrar com código"} <ArrowUpRight size={15} /></button></form>}

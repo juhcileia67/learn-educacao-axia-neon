@@ -20,12 +20,14 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
+import { trpc } from "@/lib/trpc";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, MessageCircle, PanelLeft, Sparkles, Users, type LucideIcon } from "lucide-react";
+import { Download, LayoutDashboard, LogOut, MessageCircle, PanelLeft, Sparkles, Users, type LucideIcon } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 const defaultMenuItems: DashboardNavItem[] = [
   { icon: LayoutDashboard, label: "Page 1", path: "/" },
@@ -119,6 +121,7 @@ function DashboardLayoutContent({
   preview,
 }: DashboardLayoutContentProps) {
   const { user, logout } = useAuth();
+  const exportDataQuery = trpc.platform.exportMyData.useQuery(undefined, { enabled: Boolean(user && !preview), retry: false });
   const [location, setLocation] = useLocation();
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
@@ -229,13 +232,41 @@ function DashboardLayoutContent({
                     <span>Entrar com conta</span>
                   </DropdownMenuItem>
                 ) : (
-                  <DropdownMenuItem
-                    onClick={logout}
-                    className="cursor-pointer text-destructive focus:text-destructive"
-                  >
+                  <>
+                    <DropdownMenuItem
+                      disabled={exportDataQuery.isFetching}
+                      onClick={async () => {
+                        try {
+                          const result = await exportDataQuery.refetch();
+                          if (!result.data) throw new Error("Não foi possível preparar seus dados agora.");
+                          const date = new Date().toISOString().slice(0, 10);
+                          const blob = new Blob([JSON.stringify(result.data, null, 2)], { type: "application/json;charset=utf-8" });
+                          const url = URL.createObjectURL(blob);
+                          const anchor = document.createElement("a");
+                          anchor.href = url;
+                          anchor.download = `learn-educacao-meus-dados-${date}.json`;
+                          document.body.appendChild(anchor);
+                          anchor.click();
+                          anchor.remove();
+                          window.setTimeout(() => URL.revokeObjectURL(url), 0);
+                          toast.success("Seus dados foram exportados em JSON.");
+                        } catch (error) {
+                          toast.error(error instanceof Error ? error.message : "Não foi possível preparar seus dados agora.");
+                        }
+                      }}
+                      className="cursor-pointer"
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      <span>{exportDataQuery.isFetching ? "Preparando..." : "Exportar meus dados"}</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={logout}
+                      className="cursor-pointer text-destructive focus:text-destructive"
+                    >
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span>Sair</span>
-                  </DropdownMenuItem>
+                      <span>Sair</span>
+                    </DropdownMenuItem>
+                  </>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>

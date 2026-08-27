@@ -578,3 +578,45 @@ export async function listAttentionSignals(classroomId: number) {
     .orderBy(desc(learningSignals.createdAt))
     .limit(40);
 }
+
+
+/** Exportação privada: retorna somente registros pertencentes ao usuário autenticado. */
+export async function getUserDataExport(user: {
+  id: number;
+  name: string | null;
+  email: string | null;
+  role: string;
+  createdAt: Date;
+  updatedAt: Date;
+}) {
+  const [classes, overview] = await Promise.all([
+    listClassesForUser(user.id),
+    getUserOverview(user.id, user.role),
+  ]);
+  const [assignments, submissions, recognitions] = user.role === "aluno"
+    ? await Promise.all([listAssignmentsForStudent(user.id), listSubmissionsForStudent(user.id), listRecognitionsForStudent(user.id)])
+    : [[], [], []];
+  const [teacherSubmissions, teacherRecognitions, interventions, journals] = user.role !== "aluno"
+    ? await Promise.all([listTeacherSubmissions(user.id), listTeacherRecognitions(user.id), listTeacherInterventions(user.id), listTeacherJournals(user.id)])
+    : [[], [], [], []];
+  const hasInstitutionalAccess = ["coordenacao", "diretoria", "admin"].includes(user.role);
+  const [institutions, institutionClassrooms] = hasInstitutionalAccess
+    ? await Promise.all([listInstitutions(), listInstitutionClassrooms()])
+    : [[], []];
+
+  return {
+    exportedAt: new Date().toISOString(),
+    profile: {
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    },
+    overview,
+    classes,
+    studentData: { assignments, submissions, recognitions },
+    teachingData: { submissions: teacherSubmissions, recognitions: teacherRecognitions, interventions, journals },
+    institutionalData: { institutions, classrooms: institutionClassrooms },
+  };
+}

@@ -100,3 +100,27 @@
 
 - [x] Fazer upload do arquivo de backup completo e entregar o link correto ao usuário.
 - [x] Registrar no guia de backup que o modelo seguro permanece como `ENVIRONMENT_VARIABLES.example` por limitação da plataforma.
+
+## Exportação de dados do usuário
+
+- [x] Mapear os dados privados exportáveis do painel do usuário.
+- [x] Implementar endpoint protegido e botão de download da exportação.
+- [x] Cobrir a exportação com teste e validar o fluxo no build.
+
+## Refinamento da exportação por perfil
+
+- [x] Disponibilizar a exportação no menu de usuário de todos os painéis autenticados.
+- [x] Incluir no payload dados próprios de professor e gestão, mantendo escopo por usuário.
+- [x] Adicionar teste de caminho feliz e validar o payload exportado.
+
+## Cobertura final da exportação
+
+- [x] Exibir feedback de erro e sucesso no menu compartilhado e confirmar o uso do layout nos painéis autenticados.
+- [x] Definir e cobrir o payload próprio para coordenação, diretoria e administração.
+- [x] Criar testes de payload para professor e gestão, sem campos sensíveis.
+
+## Verificação institucional da exportação
+
+- [x] Confirmar no código que todas as visões autenticadas do portal usam `DashboardLayout`.
+- [x] Cobrir coordenação e diretoria com as mesmas garantias de payload e privacidade.
+- [x] Fortalecer asserções contra campos sensíveis na exportação.
