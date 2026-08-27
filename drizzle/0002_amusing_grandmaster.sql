@@ -1,0 +1,1 @@
+ALTER TABLE `recognitions` ADD `status` enum('em_andamento','conquistada') DEFAULT 'conquistada' NOT NULL;

@@ -1,0 +1,79 @@
+# Plataforma Learn Educação — expansão por perfil
+
+- [x] Inventariar as telas, fluxos e dados presentes no app de professores anexado.
+- [x] Definir o modelo de acesso para aluno, professor, coordenação e diretoria.
+- [x] Mapear indicadores de turma, aprendizagem, engajamento e entregas por perfil.
+- [x] Criar as rotas e painéis demonstráveis da plataforma web unificada.
+- [x] Validar a navegação entre perfis em desktop e mobile.
+- [x] Criar matriz de permissões para aluno, professor, coordenação/diretoria e administrador institucional.
+- [x] Modelar dados compatíveis com instituições, códigos de turma, matrículas, atividades, entregas, XP e modos da AXIA.
+- [x] Implementar a estrutura modular do painel de aluno, sem expor dados de outros estudantes.
+- [x] Implementar o espaço completo do professor: turmas, alunos, criação de atividades, mapa de aprendizagem, radar e intervenções sugeridas.
+- [x] Implementar a área institucional com filtros, visão Escola → Série → Turma → Matéria → Conteúdo, atenção e relatórios.
+- [x] Preparar recursos pendentes para integração futura com Firebase, sem apresentar dados demonstrativos como dados reais.
+- [x] Vincular a navegação e os módulos do portal ao perfil autenticado, preservando as abas apenas como prévia explícita.
+- [x] Completar o encaminhamento demonstrável de reforços aprovados para uma turma ou estudante autorizado.
+- [x] Fazer os filtros institucionais modificarem a leitura apresentada no ambiente demonstrativo.
+- [x] Incluir seleção explícita de turma ou estudante autorizado antes da confirmação de envio do reforço.
+- [x] Fazer cada página institucional refletir visualmente o recorte escolhido nos filtros.
+- [x] Criar uma matriz explícita de permissões por perfil, recurso e ação, com proteção correspondente no backend e na navegação.
+- [x] Criar a rota de detalhe do aluno com atividades, evolução, XP/conquistas, feedbacks e histórico de intervenções.
+- [x] Implementar o fluxo demonstrável de reforço: gerar proposta, revisar, editar, aprovar e encaminhar ao aluno.
+- [x] Implementar filtros e páginas institucionais distintas para Escola, Evolução, Central de Atenção, Relatórios e Permissões.
+- [x] Auditar cada botão, formulário e painel que ainda depende de cenário de prévia.
+- [x] Persistir criação e consulta de turmas com código de entrada e vínculo institucional.
+- [x] Persistir atividades, prazos, XP, modos da AXIA e entregas dos estudantes.
+- [x] Conectar os painéis de professor a dados reais de turmas, entregas e alunos vinculados.
+- [x] Ativar filtros institucionais sobre consultas reais e indicadores agregados.
+- [x] Substituir mensagens de prévia por estados vazios, carregamento, sucesso e erro funcionais.
+- [x] Permitir que o administrador atribua papéis reais a usuários já autenticados no portal.
+- [x] Conectar o chat AXIA do aluno e do professor a uma resposta de IA servida pelo backend, sem expor credenciais.
+- [x] Implementar consulta real de entregas/submissions para o professor, com contagem pendente e lista por turma e aluno.
+- [x] Fazer os filtros institucionais alimentarem as consultas agregadas de turma, série, matéria e período.
+- [x] Converter os últimos controles de prévia em fluxos funcionais ou estados vazios e de erro explícitos.
+- [x] Exibir a turma de cada entrega docente e permitir o recorte dessa lista pela turma vinculada.
+- [x] Adicionar estados de erro visíveis às consultas principais de turma, entregas, alunos, diário e indicadores institucionais.
+- [x] Conectar o detalhe individual do estudante às entregas, devolutivas e intervenções persistidas.
+- [x] Exibir estados reais de carregamento, vazio e erro no acompanhamento individual do estudante.
+- [x] Cobrir as queries restantes do professor, atividades, mapa, radar e gestão com estados explícitos de erro.
+- [x] Remover os avisos de prévia das áreas já conectadas ao banco e à AXIA.
+- [x] Adicionar tratamento de erro e estado vazio explícitos à visão de Escola e validar todas as consultas institucionais.
+- [x] Mapear a arquitetura integrada entre aplicativo do aluno, painel do professor e portal de gestão.
+- [x] Definir o fluxo de chat e notificações em tempo real entre gestão e professores, com permissões e trilha de auditoria.
+- [x] Criar um modo de demonstração claramente identificado com dados sintéticos de turmas, atividades, entregas e indicadores.
+- [x] Conectar os dados demonstrativos aos painéis de aluno, professor e gestão sem substituir operações reais do banco.
+- [x] Produzir uma apresentação resumida da arquitetura, dos canais em tempo real e do modo de demonstração.
+- [x] Permitir que o administrador abra uma visualização DEMO docente usando seus vínculos sintéticos reais, sem trocar seu papel institucional.
+- [x] Expor no painel administrativo uma prévia isolada do percurso do aluno sintético, com turma, entregas e intervenções consultadas por permissões de gestão.
+- [x] Criar uma apresentação visual focada nas funcionalidades implementadas no site Learn Educação — AXIA Neon.
+- [x] Substituir a prévia livre do portal por uma tela de entrada Learn/AXIA e bloquear dashboards sem autenticação.
+- [x] Redirecionar cada usuário autenticado ao dashboard correspondente ao papel persistido em sua conta.
+- [x] Reforçar mensagens e proteções de acesso institucional, deixando claro que papéis são concedidos por administração ou convite.
+- [x] Evoluir a Central de Hoje do professor com prioridades, entregas, prazos, sinais e atalhos operacionais.
+- [x] Ampliar a leitura institucional para coordenação e diretoria sem duplicar o dashboard docente.
+- [x] Adicionar ações contextuais da AXIA nas telas de turma, estudante, atividade, mapa e radar.
+- [x] Melhorar a adaptação mobile de navegação, métricas, tabelas e áreas de ação sem remover o visual AXIA Neon.
+- [x] Criar um guia prático para personalizar conteúdo e design do site em futuras evoluções.
+- [x] Integrar uma nova cena da AXIA com elemento luminoso nas mãos à hero da página inicial, com enquadramento responsivo.
+- [x] Corrigir a visibilidade do texto da hero ao lado da nova AXIA em desktop e adicionar movimento suave e acessível à personagem e ao diamante.
+- [x] Reproduzir na entrada institucional a composição visual de login e acesso por perfil das referências, mantendo o provedor de identidade atual.
+- [x] Reestruturar o painel docente para o padrão visual de busca, métricas, Central de Hoje, sugestão da AXIA, turmas e atividade recente das referências.
+- [x] Reformatar a tela de turmas com a tabela detalhada, filtros e indicadores da referência, sem trocar dados reais por números fictícios.
+- [x] Adicionar uma área de reconhecimentos no padrão visual da referência, com estados vazios reais quando não houver conquistas registradas.
+- [x] Adicionar busca real no painel docente por turma, atividade ou estudante, aplicada aos dados exibidos.
+- [x] Implementar filtros reais de instituição, série e vínculo na tabela de turmas.
+- [x] Conectar reconhecimentos aos registros persistidos e habilitar filtros Todos, Em andamento e Conquistados com estado vazio real.
+- [x] Modelar e consultar status persistido de reconhecimento para diferenciar Todos, Em andamento e Conquistados.
+- [x] Adicionar no topo da landing page um menu de entrada para Aluno, Professor e Administração, mantendo a validação real de papéis após o login.
+- [x] Reestruturar exclusivamente a página Mapa de Conquistas/Reconhecimentos com cards, filtros, progresso e resumo no padrão da referência.
+- [x] Remover o percentual fixo dos cards em andamento e manter apenas status e resumo calculados por registros persistidos.
+- [x] Vincular cada reconhecimento a uma atividade ou intervenção específica e exibir essa origem no Mapa de Conquistas.
+- [x] Exibir no Mapa de Conquistas apenas reconhecimentos com origem vinculada e verificável.
+- [x] Tornar os cards de reconhecimento clicáveis para abrir a atividade ou intervenção de origem autorizada.
+- [x] Criar uma habilidade reutilizável para evoluir visualmente e validar fluxos funcionais do portal Learn.
+- [x] Permitir editar categoria, mensagem e status de um reconhecimento diretamente pelo card clicável, preservando sua origem vinculada.
+- [x] Restaurar o clique e teclado no card inteiro de reconhecimento, mantendo os controles internos de editar e abrir origem.
+- [x] Criar uma página própria de aluno com navegação e dados privados do perfil autenticado.
+- [x] Oferecer ao administrador uma entrada DEMO isolada para visualizar a experiência de aluno sem trocar seu papel real.
+- [x] Adicionar uma seção de conquistas privadas no perfil do aluno, visível somente ao próprio estudante e a perfis autorizados no modo DEMO.
+- [x] Adicionar uma linha do tempo privada de evolução no perfil do aluno, com entregas, devolutivas e conquistas do próprio estudante.
