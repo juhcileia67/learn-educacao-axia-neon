@@ -15,18 +15,18 @@ Este documento separa o que é **portável** do que precisa ser substituído ant
 
 ## Assets não recuperados nesta cópia
 
-O frontend referencia seis PNGs pelo caminho `/manus-storage/`. Esses bytes não estavam presentes no filesystem desta cópia e o storage atual recusou a recuperação com autorização deste novo projeto. Para não substituir arte visual por conteúdo inventado, nenhum recurso foi recriado.
+O frontend referenciava seis PNGs pelo caminho `/manus-storage/`. A imagem principal da AXIA foi recuperada do arquivo enviado pelo usuário e será incluída como asset local na exportação atualizada. Os cinco recursos restantes não estavam presentes no filesystem desta cópia e o storage atual recusou a recuperação com a autorização deste novo projeto. Para não substituir arte visual por conteúdo inventado, eles não foram recriados.
 
 | Asset referenciado | Pontos de uso | Ação necessária |
 |---|---|---|
-| `axia-hero-luminous-object_3b3784ba.png` | Hero e painel docente | Exportar o PNG original do storage/projeto de origem e salvar em `client/public/assets/`. |
+| `axia-hero-luminous-object_3b3784ba.png` | Hero e painel docente | Recuperado do arquivo `axiaAvatar.png` enviado pelo usuário; será salvo em `client/public/assets/`. |
 | `axia-neon-activity-scene_49f4476b.png` | Landing | Exportar o PNG original e atualizar a referência para `/assets/...`. |
 | `axia-neon-hero-city_78ca7d9b.png` | Landing | Exportar o PNG original e atualizar a referência para `/assets/...`. |
 | `axia-neon-mark_befbeb3c.png` | Marca e portal | Exportar o PNG original e atualizar a referência para `/assets/...`. |
 | `axia-neon-orbit-learning_4963663d.png` | Landing | Exportar o PNG original e atualizar a referência para `/assets/...`. |
 | `axia-neon-tutor_93546aa8.png` | Landing | Exportar o PNG original e atualizar a referência para `/assets/...`. |
 
-> Esses seis assets são a única lacuna conhecida de recursos visuais desta cópia. Não havia outros arquivos de imagem, fonte, vídeo ou SVG locais versionados no projeto no momento da preparação.
+> Os cinco assets marcados como pendentes são a única lacuna conhecida de recursos visuais desta cópia. Não havia outros arquivos de imagem, fonte, vídeo ou SVG locais versionados no projeto no momento da preparação.
 
 ## Migração recomendada por domínio
 

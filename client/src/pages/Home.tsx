@@ -34,7 +34,7 @@ const assets = {
   orbit: "/manus-storage/axia-neon-orbit-learning_4963663d.png",
   activities: "/manus-storage/axia-neon-activity-scene_49f4476b.png",
   mark: "/manus-storage/axia-neon-mark_befbeb3c.png",
-  luminousHero: "/manus-storage/axia-hero-luminous-object_3b3784ba.png",
+  luminousHero: "/manus-storage/axia-hero-luminous-object_3b3784ba_a05affca.png",
 };
 
 const routeItems = [

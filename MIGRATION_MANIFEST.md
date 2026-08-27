@@ -47,4 +47,4 @@ O build emite apenas o aviso de tamanho de chunk do Vite para o bundle JavaScrip
 
 ## Limitação de assets
 
-Os bytes de seis PNGs externos foram requisitados ao storage atual durante a preparação, porém o serviço retornou autorização negada para esta cópia. Os nomes e os caminhos estão documentados em `DEPENDENCIAS_MANUS.md` e `client/public/assets/ASSETS_PENDENTES.md`. O pacote não contém substitutos artificiais; os PNGs originais precisam ser recuperados na origem autorizada.
+Um dos seis PNGs externos — `axia-hero-luminous-object_3b3784ba.png` — foi recuperado do arquivo original enviado pelo usuário e está incluído no pacote atualizado. Os cinco recursos restantes retornaram autorização negada no storage atual; seus nomes e caminhos estão documentados em `DEPENDENCIAS_MANUS.md` e `client/public/assets/ASSETS_PENDENTES.md`. O pacote não contém substitutos artificiais para esses cinco recursos.

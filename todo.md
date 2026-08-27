@@ -84,3 +84,11 @@
 - [x] Criar configurações seguras de ambiente e guias de substituição para serviços do Manus.
 - [x] Preparar README e documento de dependências para migração a outro provedor.
 - [x] Gerar e validar um arquivo ZIP sem dependências instaladas, caches ou credenciais reais.
+- [ ] Recuperar os seis assets visuais originais vinculados ao storage anterior.
+- [ ] Incluir os assets recuperados em um ZIP de migração atualizado e validar sua integridade.
+- [x] Inspecionar o ZIP enviado e identificar os assets originais recuperáveis.
+- [ ] Incorporar os assets originais encontrados ao código-fonte exportável.
+- [ ] Incorporar a imagem original da AXIA fornecida pelo usuário como recurso local no pacote de migração.
+- [ ] Atualizar e validar o ZIP de migração com a imagem da AXIA incluída.
+- [ ] Recriar os cinco assets visuais faltantes no estilo AXIA Neon aprovado pelo usuário.
+- [ ] Substituir todas as referências externas de assets por recursos locais no pacote de migração.
