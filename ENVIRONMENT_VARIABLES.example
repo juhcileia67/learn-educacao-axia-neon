@@ -1,0 +1,37 @@
+# Renomeie este arquivo para .env no provedor externo depois de preencher os valores.
+# Nunca versione .env com credenciais reais.
+
+# Runtime
+NODE_ENV=development
+PORT=3000
+
+# Banco de dados MySQL/TiDB compatível com Drizzle ORM.
+# Exemplo: mysql://USUARIO:SENHA@HOST:3306/NOME_DO_BANCO
+DATABASE_URL=mysql://USUARIO:SENHA@HOST:3306/learn_axia
+
+# Sessão local. Gere um valor criptograficamente aleatório com pelo menos 32 bytes.
+JWT_SECRET=gere-uma-chave-aleatoria-segura
+
+# OAuth — o código atual usa o provedor Manus e deve ser substituído ou configurado
+# com um adaptador compatível antes de usar o login fora do Manus.
+VITE_APP_ID=seu-client-id-oauth
+OAUTH_SERVER_URL=https://seu-provedor-oauth.example.com
+VITE_OAUTH_PORTAL_URL=https://seu-provedor-oauth.example.com
+OWNER_OPEN_ID=identificador-do-administrador-inicial
+
+# Serviços internos Manus/Forge. Não preencher para uma hospedagem independente.
+# Substitua os adaptadores em server/_core/llm.ts e server/storage.ts por provedores próprios.
+BUILT_IN_FORGE_API_URL=
+BUILT_IN_FORGE_API_KEY=
+VITE_FRONTEND_FORGE_API_URL=
+VITE_FRONTEND_FORGE_API_KEY=
+
+# Analytics opcional. Remova o script correspondente de client/index.html se não usar Umami.
+VITE_ANALYTICS_ENDPOINT=
+VITE_ANALYTICS_WEBSITE_ID=
+
+# Contrato opcional para sincronização com apps Learn/Firebase. Atualmente não há cliente Firebase ativo.
+FIREBASE_PROJECT_ID=
+FIREBASE_APP_ID=
+FIREBASE_PUBLIC_API_KEY=
+LEARN_SYNC_ENDPOINT=

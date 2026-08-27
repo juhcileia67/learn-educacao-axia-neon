@@ -77,3 +77,10 @@
 - [x] Oferecer ao administrador uma entrada DEMO isolada para visualizar a experiência de aluno sem trocar seu papel real.
 - [x] Adicionar uma seção de conquistas privadas no perfil do aluno, visível somente ao próprio estudante e a perfis autorizados no modo DEMO.
 - [x] Adicionar uma linha do tempo privada de evolução no perfil do aluno, com entregas, devolutivas e conquistas do próprio estudante.
+
+## Exportação independente
+
+- [x] Inventariar código, assets e dependências de infraestrutura do Manus.
+- [x] Criar configurações seguras de ambiente e guias de substituição para serviços do Manus.
+- [x] Preparar README e documento de dependências para migração a outro provedor.
+- [x] Gerar e validar um arquivo ZIP sem dependências instaladas, caches ou credenciais reais.
