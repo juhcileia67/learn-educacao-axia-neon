@@ -92,3 +92,11 @@
 - [x] Atualizar e validar o ZIP de migração com a imagem da AXIA incluída.
 - [x] Tentar recriar os cinco assets visuais faltantes: a geração foi autorizada, mas bloqueada pelo limite diário; a limitação foi documentada para retomada posterior.
 - [x] Substituir as referências da imagem principal da AXIA por recurso local no pacote de migração; os cinco assets restantes permanecem documentados como pendentes.
+
+## Backup completo
+
+- [x] Montar um arquivo único de backup com código, configurações, schema/migrations, assets disponíveis e documentação externa.
+- [x] Validar o backup e entregar o arquivo para download.
+
+- [x] Fazer upload do arquivo de backup completo e entregar o link correto ao usuário.
+- [x] Registrar no guia de backup que o modelo seguro permanece como `ENVIRONMENT_VARIABLES.example` por limitação da plataforma.
