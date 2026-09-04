@@ -124,3 +124,20 @@
 - [x] Confirmar no código que todas as visões autenticadas do portal usam `DashboardLayout`.
 - [x] Cobrir coordenação e diretoria com as mesmas garantias de payload e privacidade.
 - [x] Fortalecer asserções contra campos sensíveis na exportação.
+
+## Portfólio para Canva
+
+- [x] Inspecionar o ZIP e separar conteúdo seguro para apresentação.
+- [x] Criar narrativa visual do projeto sem expor código, credenciais ou arquitetura sensível.
+- [x] Preparar kit de imagens, textos e instruções para montar/publicar no Canva.
+
+## Referência de evolução para o portfólio
+
+- [x] Inspecionar `Learn_Evolucao_Cronologica.zip` e selecionar marcos, textos e imagens seguros.
+- [x] Integrar a evolução cronológica ao roteiro visual do portfólio Canva.
+
+## Curadoria pública do portfólio
+
+- [x] Criar manifesto dos conteúdos públicos aprovados do ZIP do projeto.
+- [x] Criar manifesto dos marcos, textos e imagens aprovados do ZIP de evolução.
+- [x] Organizar uma pasta de staging apenas com assets e capturas aprovados.
