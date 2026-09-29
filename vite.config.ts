@@ -154,6 +154,8 @@ const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(
 
 export default defineConfig({
   plugins,
+  // GitHub Pages serves this project from a repository subpath.
+  base: process.env.GITHUB_ACTIONS ? "/learn-educacao-axia-neon/" : "/",
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
